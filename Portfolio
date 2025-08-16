@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Ogbonna Gerald - Portfolio</title>
+
+  <!-- CSS styling layout -->
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -59,13 +61,16 @@
     }
   </style>
 </head>
+
 <body>
 
+<!-- Header section -->
   <header>
     <h1>Ogbonna Gerald Ifeany</h1>
     <p>Front-End Developer | Website Manager.</p>
   </header>
 
+  <!-- Bio section -->
   <section>
     <h2>Bio</h2>
     <p>
@@ -77,6 +82,7 @@ and administrative roles. I love turning ideas into reality, I am always eager t
     </p>
   </section>
 
+   <!-- Skills section -->
   <section>
     <h2>Skills</h2>
     <ul>
@@ -92,6 +98,7 @@ and administrative roles. I love turning ideas into reality, I am always eager t
     </ul>
   </section>
 
+  <!-- Experience section -->
   <section>
     <h2>Experience</h2>
     <ul>
@@ -110,6 +117,7 @@ and administrative roles. I love turning ideas into reality, I am always eager t
     </ul>
   </section>
 
+  <!-- Contact section -->
   <section class="contact-info">
     <h2>Contact Information</h2>
     <p>Email: sme.gerald@gmail.com</p>
