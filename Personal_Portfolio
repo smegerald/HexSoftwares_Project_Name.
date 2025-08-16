@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ogbonna Gerald - Portfolio</title>
+
+  <!-- CSS styling layout -->
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #34495e;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    header p {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ecf0f1;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    .contact-info p {
+      margin: 8px 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #34495e;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Header section -->
+  <header>
+    <h1>Ogbonna Gerald Ifeany</h1>
+    <p>Front-End Developer | Website Manager.</p>
+  </header>
+
+  <!-- Bio section -->
+  <section>
+    <h2>Bio</h2>
+    <p>
+      I am dedicated and versatile frontend developer with a degree in Industrial Physics, bringing a robust set of
+tech- related skills to the table. I design websites and do other technical skills. I am proficient in various web content management systems, including WordPress, Wix, and
+possess a strong aptitude for design tools such as Canva, CorelDraw etc. Additionally, I have an
+understanding of AI automation solutions, making me a well-rounded candidate for diverse technical
+and administrative roles. I love turning ideas into reality, I am always eager to learn new technologies and collaborate on exciting projects.
+    </p>
+  </section>
+
+   <!-- Skills section -->
+  <section>
+    <h2>Skills</h2>
+    <ul>
+      <li>Frontend developer</li>
+      <li>Responsive Web Design</li>
+      <li>Active Website Manager.</li>
+      <li>Content Management System and Low-Code Platforms, like Wordpress, Wix, etc</li>
+      <li>Design and Creative Production, like Corel draw, Canva, etc</li>
+      <li>AI & Automation Layer ( Prompt engineering and fine-tuning fundamentals)</li>
+      <li>Problem Solving & Critical Thinking</li>
+      <li>Time Management & Organization</li>
+      <li>Communication & Teamwork</li>
+    </ul>
+  </section>
+
+  <!-- Experience section -->
+  <section>
+    <h2>Experience</h2>
+    <ul>
+      <li><strong>Intern - Web Development</strong> Hex Softwares Aug. 2025<br>
+        Built responsive landing pages and collaborated with designers to improve user experience.
+      </li>
+      <li><strong>Project Manager</strong> Larnton Smart Solutions - Dec 2024 – Till date<br>
+        Work with other backend developers, Manage and update active client’s website. Develop promotional
+        graphics that align with clients’ brand and train them on how to use their website features, etc.
+      </li>
+      <li><strong>IT Director (Remote)</strong> St. Mulumba College - Jan 2023<br>
+        Develop and maintain a functional and active school website and portal, where students can easily
+        access their results online. Maintaining frontend graphics, brand colors, and maintaining the
+        responsiveness of the website on different user devices, content styling and general website
+        management.
+    </ul>
+  </section>
+
+  <!-- Contact section -->
+  <section class="contact-info">
+    <h2>Contact Information</h2>
+    <p>Email: sme.gerald@gmail.com</p>
+    <p>Phone: +2348161718912</p>
+    <p>LinkedIn: linkedin.com/in/gerald-ogbonna</p>
+    <p>GitHub: github.com/smegerald</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Ogbonna Gerald Ifeanyi. All rights reserved.
+  </footer>
+
+</body>
+</html>
