@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ogbonna Gerald Ifeanyi - Resume</title>
+  
+</head>
+<body>
+
+   <!-- header -->
+  <header>
+    <h1>Ogbonna Gerald Ifeanyi</h1>
+    <h3>Web Developer</h3>
+    <img src="headshot.jpg" alt="Professional headshot of Ogbonna Gerald" width="200" height="200" />
+  </header>
+
+  <!-- About Me section -->
+  <section>
+    <h2>About Me</h2>
+    <p>
+      I am a dedicated and versatile frontend developer with a degree in Industrial Physics, bringing a robust set of
+tech- related skills to the table. I have a record of designing responsive and beautiful websites. I am proficient in various web content management systems, including WordPress, Wix, and
+possess a strong aptitude for design tools such as Canva, CorelDraw etc. Additionally, I have an
+understanding of AI automation solutions, making me a well-rounded candidate for diverse technical
+and administrative roles. I love turning ideas into reality, I am always eager to learn new technologies and collaborate on exciting projects.
+   </p>
+  </section>
+
+  
+    <!-- My skills -->
+
+  <section>
+    <h2>Skills</h2>
+    <h3>Technical Skills</h3>
+    <ul>
+      <li>Front-end: HTML5, CSS3, JavaScript</li>
+      <li>Content Management System & low-code: WordPress (custom themes/plugins), Wix, Webflow, etc.</li>
+      <li>Design stack: Canva, CorelDraw—pixel-perfect, accessible</li>
+      <li>AI and automation: OpenAI APIs, prompt engineering, etc.</li>
+      <li>SEO best practices</li>
+      <li>Responsive Designs</li>
+    </ul>
+
+    <h3>Soft Skills</h3>
+    <ul>
+      <li>Clear Communicator</li>
+      <li>Problem Solving</li>
+      <li>Critical Thinking</li>
+      <li>Organization</li>
+      <li>Teamwork</li>
+      <li>Adaptability</li>
+      <li>Time Management</li>
+      <li>Attention to Detail</li>
+      <li>Good Collaborator</li>
+      <li>Self-learner</li>
+    </ul>
+  </section>
+
+</body>
+</html>
