@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Larnton Web Music Player</title>
+  <style>
+    :root{
+      --accent:#ff0000;
+      --bg:#f5f7fa;
+      --card:#fff;
+      --text:#333;
+      --subtle:#888;
+      --border:#e2e8f0;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,Arial}
+    body{
+      display:flex;align-items:center;justify-content:center;
+      min-height:100vh;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+    }
+    .player{
+      width:100%;max-width:480px;background:var(--card);border-radius:12px;
+      box-shadow:0 8px 24px rgba(0,0,0,.15);overflow:hidden;
+    }
+    .header{padding:20px;background:var(--accent);color:#fff;text-align:center}
+    .now-playing{padding:20px;text-align:center}
+    .now-playing .title{font-size:1.4rem;font-weight:600;margin-bottom:4px}
+    .now-playing .artist{color:var(--subtle)}
+    .progress-area{margin:16px 0}
+    .progress-bar{
+      height:6px;background:var(--border);border-radius:3px;cursor:pointer
+    }
+    .progress-bar .progress{
+      height:100%;background:var(--accent);border-radius:3px;width:0
+    }
+    .time{display:flex;justify-content:space-between;font-size:.8rem;color:var(--subtle)}
+    .controls{display:flex;justify-content:center;align-items:center;gap:24px;margin:20px 0}
+    .controls button{
+      width:48px;height:48px;border:none;border-radius:50%;
+      background:var(--accent);color:#fff;font-size:20px;cursor:pointer;
+      transition:transform .2s
+    }
+    .controls button:hover{transform:scale(1.1)}
+    .volume-area{display:flex;align-items:center;gap:8px;padding:0 20px 20px}
+    .volume-area input{width:100%}
+    .playlist{max-height:280px;overflow-y:auto;border-top:1px solid var(--border)}
+    .playlist .item{
+      display:flex;justify-content:space-between;padding:12px 20px;
+      cursor:pointer;border-bottom:1px solid var(--border)
+    }
+    .playlist .item.active{background:rgba(102,126,234,.1)}
+    .playlist .item:hover{background:#f9fafb}
+    .playlist .song-info{font-size:.95rem}
+    .playlist .duration{font-size:.85rem;color:var(--subtle)}
+  </style>
+</head>
+<body>
+
+<div class="player">
+  <div class="header">
+    <h2>Larnton Web Music Player</h2>
+  </div>
+
+  <!-- Current Song -->
+  <div class="now-playing">
+    <div class="title" id="title">Select a song</div>
+    <div class="artist" id="artist">-</div>
+
+    <div class="progress-area">
+      <div class="progress-bar" id="progress-container">
+        <div class="progress" id="progress"></div>
+      </div>
+      <div class="time">
+        <span id="current-time">0:00</span>
+        <span id="duration">0:00</span>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="prev" title="Previous">⏮</button>
+      <button id="play-pause" title="Play / Pause">▶</button>
+      <button id="next" title="Next">⏭</button>
+    </div>
+
+    <div class="volume-area">
+      🔊
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
+    </div>
+  </div>
+
+  <!-- Playlist -->
+  <div class="playlist" id="playlist"></div>
+</div>
+
+<script>
+  // Demo songs (royalty-free from Bensound)
+  const songs = [
+   {title:"Buddy",       artist:"Bensound", duration:"2:02", src:"https://www.bensound.com/bensound-music/bensound-buddy.mp3"},
+    {title:"Sunny",       artist:"Bensound", duration:"2:20", src:"https://www.bensound.com/bensound-music/bensound-sunny.mp3"},
+    {title:"Ukulele",     artist:"Bensound", duration:"2:26", src:"https://www.bensound.com/bensound-music/bensound-ukulele.mp3"}
+  ];
+
+  // Elements
+  const audio = new Audio();
+  let current = 0;
+  const $ = id => document.getElementById(id);
+  const playlistEl = $('playlist');
+  const titleEl     = $('title');
+  const artistEl    = $('artist');
+  const playBtn     = $('play-pause');
+  const prevBtn     = $('prev');
+  const nextBtn     = $('next');
+  const progressBar = $('progress');
+  const progressContainer = $('progress-container');
+  const currentTimeEl = $('current-time');
+  const durationEl    = $('duration');
+  const volumeSlider  = $('volume');
+
+  // Render playlist
+  function renderPlaylist(){
+    playlistEl.innerHTML = '';
+    songs.forEach((s,i)=>{
+      const div = document.createElement('div');
+      div.className = 'item' + (i===current ? ' active' : '');
+      div.innerHTML = `
+        <div>
+          <div class="song-info">${s.title} – ${s.artist}</div>
+        </div>
+        <div class="duration">${s.duration}</div>
+      `;
+      div.onclick = ()=>{current=i; loadSong(); playSong();};
+      playlistEl.appendChild(div);
+    });
+  }
+
+  // Load song
+  function loadSong(){
+    const song = songs[current];
+    audio.src = song.src;
+    titleEl.textContent = song.title;
+    artistEl.textContent = song.artist;
+    renderPlaylist();
+  }
+
+  // Play / Pause
+  function playSong(){audio.play(); playBtn.innerHTML='⏸';}
+  function pauseSong(){audio.pause(); playBtn.innerHTML='▶';}
+  function togglePlay(){audio.paused ? playSong() : pauseSong();}
+
+  // Navigation
+  function prevSong(){current=(current-1+songs.length)%songs.length; loadSong(); playSong();}
+  function nextSong(){current=(current+1)%songs.length; loadSong(); playSong();}
+
+  // Progress
+  function updateProgress(){
+    const percent = (audio.currentTime/audio.duration)*100 || 0;
+    progressBar.style.width = percent + '%';
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+  }
+  function setProgress(e){
+    const width = this.clientWidth;
+    const clickX = e.offsetX;
+    audio.currentTime = (clickX/width)*audio.duration;
+  }
+  function formatTime(sec){
+    const m = Math.floor(sec/60);
+    const s = Math.floor(sec%60);
+    return `${m}:${s<10?'0':''}${s}`;
+  }
+  function updateDuration(){durationEl.textContent = formatTime(audio.duration);}
+
+  // Events
+  playBtn.onclick = togglePlay;
+  prevBtn.onclick = prevSong;
+  nextBtn.onclick = nextSong;
+  progressContainer.onclick = setProgress;
+  volumeSlider.oninput = ()=> audio.volume = volumeSlider.value;
+  audio.ontimeupdate = updateProgress;
+  audio.onloadedmetadata = updateDuration;
+  audio.onended = nextSong;
+
+  // Init
+  loadSong();
+  renderPlaylist();
+</script>
+</body>
+</html>
