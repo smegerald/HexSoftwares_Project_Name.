@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Larnton Gym House</title>
+
+  <!------ Styling --------->
+  <style>
+    :root{
+      --accent:#c80000;
+      --dark:#121212;
+      --light:#f5f5f5;
+      --gray:#666;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial,Helvetica}
+    html{scroll-behavior:smooth}
+    body{background:var(--light);color:var(--dark);line-height:1.6}
+    header{
+      position:fixed;top:0;width:100%;background:rgba(0,0,0,.85);
+      display:flex;justify-content:space-between;align-items:center;
+      padding:12px 5%;z-index:1000;backdrop-filter:saturate(180%) blur(10px)
+    }
+    header img{height:40px}
+    nav a{color:#fff;margin:0 12px;text-decoration:none;font-weight:600}
+    nav a:hover{color:var(--accent)}
+    section{padding:100px 5% 60px}
+    /* HERO SLIDER */
+    #hero{
+      position:relative;height:100vh;overflow:hidden;
+      display:flex;align-items:center;justify-content:center;color:#fff;
+    }
+    .slider{
+      position:absolute;top:0;left:0;width:100%;height:100%;
+      background-size:cover;background-position:center;transition:opacity 1s;
+      opacity:0;
+    }
+    .slider.active{opacity:1}
+    .hero-overlay{
+      position:absolute;inset:0;background:rgba(0,0,0,.55);
+      display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center
+    }
+    .hero-overlay h1{font-size:3rem;margin-bottom:12px}
+    .hero-overlay p{font-size:1.25rem;margin-bottom:28px}
+    /* ABOUT WRAPPER */
+    .about-wrapper{
+      display:flex;gap:40px;align-items:center;flex-wrap:wrap
+    }
+    .about-text{flex:1 1 500px;text-align:left}
+    .about-img{
+      flex:1 1 300px;border-radius:8px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.15)
+    }
+    .about-img img{width:100%;height:auto;display:block}
+    .btn{background:var(--accent);color:#fff;padding:14px 32px;border:none;border-radius:30px;font-size:1rem;cursor:pointer;transition:.3s}
+    .btn:hover{background:#910000;transform:translateY(-2px)}
+    h2{font-size:2.2rem;margin-bottom:32px;text-align:center}
+    .grid{display:grid;gap:24px}
+    #facilities .grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+    .card img{width:100%;height:200px;object-fit:cover}
+    .card-body{padding:20px}
+    .card h3{margin-bottom:8px}
+    #services .grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));text-align:center}
+    .service-icon{font-size:48px;margin-bottom:12px;color:var(--accent)}
+    #plans .grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .plan{border:2px solid transparent;text-align:center;padding:28px}
+    .plan.popular{border-color:var(--accent);transform:scale(1.05)}
+    .plan h3{font-size:1.5rem;margin-bottom:12px}
+    .price{font-size:2rem;font-weight:700;color:var(--accent);margin-bottom:20px}
+    .features{list-style:none;margin-bottom:28px}
+    .features li{padding:6px 0}
+     /* Contact */
+    input[type=email] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+ input[type=text], select, textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+    footer{background:#000;color:#fff;text-align:center;padding:24px 5%}
+    @media(max-width:600px){
+      header{flex-direction:column;padding:8px}
+      nav a{margin:4px 8px;font-size:.9rem}
+      .hero-overlay h1{font-size:2.2rem}
+      .about-wrapper{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Nav -->
+  <header>
+     <a href="gym.html">
+    <img src="https://travel.larnton.com.ng/logo-white.png" alt="FlexFit Logo">
+    </a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#facilities">Facilities</a>
+      <a href="#services">Services</a>
+      <a href="#plans">Plans</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO SLIDER -->
+  <section id="hero">
+    <div class="slider active" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1350&q=80')"></div>
+    <div class="slider" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1350&q=80')"></div>
+    <div class="slider" style="background-image:url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1350&q=80')"></div>
+
+    <div class="hero-overlay">
+      <h1>Welcome to Larnton Gym House</h1>
+      <p>Transform your body, elevate your life.</p>
+      <button class="btn" onclick="scrollToSection('plans')">Join Today</button>
+    </div>
+  </section>
+
+  <!-- About Us (with image) -->
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="about-wrapper">
+      <div class="about-text">
+      <h3>
+        Larnton Gym House
+      </h3>   
+  <p>
+Welcome to Larnton Gym House, where strength meets discipline, and fitness becomes a lifestyle. We are more than just a gym house—we are a fitness community dedicated to helping individuals of all backgrounds achieve their health, strength, and body goals in a supportive and professional environment.
+At Larnton Gym House, we believe fitness is not just about lifting weights or running on a treadmill—it’s about transformation. We are on a mission to inspire and empower people to become the best versions of themselves through tailored training programs, expert guidance, and a culture of consistency.
+  </p><br>
+<h4>Why Choose Larnton Gym House</h4>
+<ul>
+      <li>Professional Trainers – Certified coaches with experience in bodybuilding, fitness, and wellness.</li>
+      <li>Modern Equipment – State-of-the-art machines and free weights to support every style of training.</li>
+      <li>Personalized Programs – No one-size-fits-all. We design training around you.</li>
+      <li>Community Support – A friendly, motivating environment where members inspire each other.</li>
+      <li>Proven Results – From strength gains to body transformation, our track record speaks for itself.</li>
+</ul>
+<p><br>
+Join Us today, Whether your goal is to build muscle, lose weight, improve endurance, or simply stay active, Larnton Gym House is your ultimate fitness destination. Step in today and let’s start your journey to strength, health, and confidence.
+ </p>
+      </div>
+      <div class="about-img">
+        <img src="https://images.pexels.com/photos/14598861/pexels-photo-14598861.jpeg" alt="Larnton gym house & Facility">
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities -->
+  <section id="facilities">
+    <h2>Our Facilities</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=800&q=60" alt="Weights">
+        <div class="card-body">
+          <h3>Free Weights Zone</h3>
+          <p>Full range of dumbbells, barbells & benches up to 60 kg.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=800&q=60" alt="Cardio">
+        <div class="card-body">
+          <h3>Cardio Theatre</h3>
+          <p>Latest treadmills, bikes, rowers & cross-trainers with Netflix.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&w=800&q=60" alt="Studio">
+        <div class="card-body">
+          <h3>Group Studio</h3>
+          <p>Air-conditioned studio for 30+ classes weekly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>What We Offer</h2>
+    <p>
+        We provide a wide range of training programs and fitness solutions designed for different individuals—whether you’re a beginner taking your first step towards fitness, or a seasoned athlete pushing for peak performance. Our services include
+    </p>
+    <div class="grid">
+      <div>
+        <div class="service-icon">💪</div>
+        <h3>Personal Fitness Training</h3>
+        <p>Customized workout routines built around your goals..</p>
+      </div>
+      <div>
+        <div class="service-icon">🧘</div>
+        <h3>Weight Management</h3>
+        <p>Fat loss, toning, and overall body transformation strategies..</p>
+      </div>
+      <div>
+        <div class="service-icon">⚡</div>
+        <h3>Muscle Building & Strength Training</h3>
+        <p>Structured programs for lean muscle growth and endurance.</p>
+      </div>
+      <div>
+        <div class="service-icon">🥗</div>
+        <h3>Wellness & Lifestyle Coaching</h3>
+        <p>Nutrition tips, motivation, and mindset coaching for long-term success.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership Plans -->
+  <section id="plans">
+    <h2>Membership Plans</h2>
+    <div class="grid">
+      <div class="card plan">
+        <h3>Basic</h3>
+        <div class="price">$29<span style="font-size:.9rem">/mo</span></div>
+        <ul class="features">
+          <li>24/7 Gym Access</li>
+          <li>Free Wi-Fi</li>
+        </ul>
+        <button class="btn" onclick="selectPlan('Basic')">Choose</button>
+      </div>
+
+      <div class="card plan popular">
+        <h3>Premium</h3>
+        <div class="price">$49<span style="font-size:.9rem">/mo</span></div>
+        <ul class="features">
+          <li>All Basic perks</li>
+          <li>Group Classes</li>
+          <li>Towel Service</li>
+        </ul>
+        <button class="btn" onclick="selectPlan('Premium')">Choose</button>
+      </div>
+
+      <div class="card plan">
+        <h3>Elite</h3>
+        <div class="price">$79<span style="font-size:.9rem">/mo</span></div>
+        <ul class="features">
+          <li>All Premium perks</li>
+          <li>Monthly PT session</li>
+          <li>Guest Passes</li>
+        </ul>
+        <button class="btn" onclick="selectPlan('Elite')">Choose</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p style="text-align:center;margin-bottom:20px">123 Larnton Gym House, Enugu | 📞 +2348161718912</p>
+    <form style="max-width:400px;margin:0 auto;display:grid;gap:12px;" onsubmit="submitForm(event)">
+      <input type="text" placeholder="Name" required>
+      <input type="email" placeholder="Email" required>
+      <textarea placeholder="Your message" rows="4" required></textarea>
+      <button class="btn">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2025 Larnton Gym House. All rights reserved, Hex Software Internship Project.
+  </footer>
+
+  <script>
+    // Hero slider auto-change (every 4s)
+    const slides = document.querySelectorAll('.slider');
+    let slideIndex = 0;
+    setInterval(()=>{
+      slides.forEach(s=>s.classList.remove('active'));
+      slideIndex = (slideIndex+1) % slides.length;
+      slides[slideIndex].classList.add('active');
+    },4000);
+
+    // Smooth scroll helper
+    function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+    // Plan selection
+    function selectPlan(plan){
+      alert(`You selected the ${plan} plan! We'll contact you shortly.`);
+    }
+    // Form submission
+    function submitForm(e){
+      e.preventDefault();
+      alert('Thank you! Your message has been sent.');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
